@@ -2,9 +2,26 @@
 SECRET_KEY=your-secret-key-here
 DEBUG=False
 
-# Database (Vercel will provide this)
+# Database Configuration
+# For Vercel (automatic) or external PostgreSQL
 DATABASE_URL=postgresql://username:password@host:port/database
+
+# Example external PostgreSQL URLs:
+# - Supabase: postgresql://postgres:[password]@db.[project-ref].supabase.co:5432/postgres
+# - Railway: postgresql://postgres:[password]@[host]:[port]/[database]
+# - Neon: postgresql://[user]:[password]@[host]/[database]
+# - PlanetScale: mysql://[user]:[password]@[host]/[database]
+
+# Cloud Storage (AWS S3) - Optional
+USE_S3=False
+AWS_ACCESS_KEY_ID=your-aws-access-key
+AWS_SECRET_ACCESS_KEY=your-aws-secret-key
+AWS_STORAGE_BUCKET_NAME=your-bucket-name
+AWS_S3_REGION_NAME=us-east-1
 
 # Google OAuth (if using)
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
+
+# Allowed Hosts (Vercel will set this automatically)
+ALLOWED_HOSTS=.vercel.app,.now.sh,your-domain.com
