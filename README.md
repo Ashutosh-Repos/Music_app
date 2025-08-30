@@ -1,83 +1,89 @@
-# Django based music streaming website
-> https://galvanic-music.herokuapp.com/
+# Django Music Player
 
-![GitHub stars](https://img.shields.io/github/stars/rajaprerak/MusicPlayer) 
-[![Maintenance](https://img.shields.io/badge/maintained-yes-green.svg)](https://github.com/rajaprerak/MusicPlayer/commits/master)
-[![Website shields.io](https://img.shields.io/badge/website-up-yellow)](https://galvanic-music.herokuapp.com/)
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+A Django-based music player application with user authentication, playlists, favorites, and social login features.
 
-### Website Preview
-#### Home Page
-<img src="website_images/Home.png" width="900">
+## Features
 
-#### Detail Page
-<img src="website_images/Detail.png" width="900">
+- User authentication with email/password and Google OAuth
+- Music player with playlist management
+- Favorites and recent songs tracking
+- Support for Hindi and English songs
+- Responsive design
 
-----
+## Local Development
 
-## Installation 📦
+1. Clone the repository
+2. Create a virtual environment: `python -m venv venv`
+3. Activate the virtual environment:
+   - Windows: `venv\Scripts\activate`
+   - macOS/Linux: `source venv/bin/activate`
+4. Install dependencies: `pip install -r requirements.txt`
+5. Run migrations: `python manage.py migrate`
+6. Create a superuser: `python manage.py createsuperuser`
+7. Run the development server: `python manage.py runserver`
 
->pip install -r requirements.txt
+## Deployment on Vercel
 
-#### Clone
+### Prerequisites
 
-- Clone this repo to your local machine.
+- Git repository with your code
+- Vercel account
 
-#### Run server locally
+### Steps
 
-```shell
-$ python manage.py runserver
+1. **Push your code to Git repository** (GitHub, GitLab, etc.)
+
+2. **Connect to Vercel Dashboard**:
+
+   - Go to [vercel.com](https://vercel.com)
+   - Sign in and click "New Project"
+   - Import your Git repository
+
+3. **Configure Environment Variables** in Vercel Dashboard:
+
+   - Go to your project settings
+   - Navigate to "Environment Variables"
+   - Add the following variables:
+     ```
+     SECRET_KEY=your-secret-key-here
+     DEBUG=False
+     DATABASE_URL=postgresql://username:password@host:port/database
+     ```
+
+4. **Database Setup**:
+
+   - Vercel will automatically provide a PostgreSQL database
+   - The `DATABASE_URL` will be automatically set by Vercel
+
+5. **Deploy**:
+   - Vercel will automatically detect it's a Django project
+   - The deployment will use the `vercel.json` configuration
+   - Static files will be collected automatically
+
+### Important Notes
+
+- **Media Files**: For production, you should use cloud storage (AWS S3, Cloudinary, etc.) for media files instead of local storage
+- **Static Files**: Static files are served by WhiteNoise middleware
+- **Database**: Uses PostgreSQL on Vercel, SQLite locally
+- **Environment Variables**: Make sure to set all required environment variables in Vercel dashboard
+
+### Troubleshooting
+
+- If you encounter issues with static files, check that `STATIC_ROOT` is properly configured
+- For database issues, ensure `DATABASE_URL` is correctly set
+- Check Vercel deployment logs for any Python/Django errors
+
+## Project Structure
+
 ```
-> Go to localhost:8000
-
----
-
-## Features 📋
-⚡️ SignUp and SignIn option.\
-⚡️ Google SignUp and SignIn option.\
-⚡️ Play song, view detailed information of song.\
-⚡️ Search songs.\
-⚡️ Filter songs based on language and singer.\
-⚡️ Create new playlist.\
-⚡️ Add/Remove songs to/from playlist.\
-⚡️ Add/Remove songs to/from favourites.\
-⚡️ Scroll through recently played/viewed songs.\
-⚡️ Explore songs through your personalized playlist and favourites.
-
-
----
-
-## Contributing 💡
-
-
-#### Step 1
-
-- **Option 1**
-    - 🍴 Fork this repo!
-
-- **Option 2**
-    - 👯 Clone this repo to your local machine.
-
-
-#### Step 2
-
-- **Build your code** 🔨🔨🔨
-
-#### Step 3
-
-- 🔃 Create a new pull request.
-
-
-
-## Team ✨
-
-| <a href="https://rajaprerak.github.io" target="_blank">**Prerak Raja**</a> | <a href="https://varadbhogayata.github.io" target="_blank">**Varad Bhogayata**</a> | 
-| :---: |:---:|
-| [![Prerak Raja](https://github.com/rajaprerak.png?size=100)](https://rajaprerak.github.io)    | [![Varad Bhogayata](https://github.com/varadbhogayata.png?size=100)](https://varadbhogayata.github.io) ||
-| <a href="https://github.com/rajaprerak" target="_blank">`github.com/rajaprerak`</a> | <a href="https://github.com/varadbhogayata" target="_blank">`github.com/varadbhogayata`</a> 
-
-
-## License
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
-
-- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+MusicPlayer/
+├── authentication/     # User authentication app
+├── musicapp/          # Main music player app
+├── musicplayer/       # Django project settings
+├── static/           # Static files (CSS, JS, images)
+├── media/            # User uploaded media files
+├── templates/        # HTML templates
+├── requirements.txt  # Python dependencies
+├── vercel.json      # Vercel deployment configuration
+└── build_files.sh   # Build script for Vercel
+```
