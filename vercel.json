@@ -14,10 +14,5 @@
   ],
   "env": {
     "DJANGO_SETTINGS_MODULE": "musicplayer.settings_prod"
-  },
-  "functions": {
-    "musicplayer/wsgi.py": {
-      "maxDuration": 30
-    }
   }
 }
