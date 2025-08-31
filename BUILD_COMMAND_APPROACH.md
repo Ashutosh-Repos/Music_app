@@ -7,6 +7,7 @@ We've changed from the static file approach to a **build command approach** whic
 ## 📋 **Configuration Overview**
 
 ### **vercel.json Configuration**
+
 ```json
 {
   "buildCommand": "./build.sh",
@@ -41,6 +42,7 @@ We've changed from the static file approach to a **build command approach** whic
 ```
 
 ### **build.sh Script**
+
 ```bash
 #!/bin/bash
 
@@ -63,21 +65,25 @@ echo "Build completed successfully!"
 ## 🔧 **Key Components**
 
 ### **1. Build Command (`buildCommand`)**
+
 - **Purpose**: Executes the build script during deployment
 - **Action**: Runs `./build.sh` to set up the application
 - **Benefits**: Automated setup process
 
 ### **2. Output Directory (`outputDirectory`)**
+
 - **Purpose**: Specifies where static files are collected
 - **Location**: `staticfiles/` directory
 - **Benefits**: Vercel knows where to find static assets
 
 ### **3. Install Command (`installCommand`)**
+
 - **Purpose**: Installs Python dependencies
 - **Action**: Runs `pip install -r requirements.txt`
 - **Benefits**: Ensures all dependencies are available
 
 ### **4. Framework Detection (`framework`)**
+
 - **Purpose**: Tells Vercel this is a Django application
 - **Value**: `"django"`
 - **Benefits**: Vercel applies Django-specific optimizations
@@ -85,12 +91,14 @@ echo "Build completed successfully!"
 ## 🎯 **How It Works**
 
 ### **Deployment Process**
+
 1. **Install**: Vercel runs `pip install -r requirements.txt`
 2. **Build**: Vercel executes `./build.sh`
 3. **Collect Static**: Django collects static files to `staticfiles/`
 4. **Deploy**: Vercel deploys the application with static files
 
 ### **Static File Serving**
+
 - **Static files**: Served from `staticfiles/` directory
 - **Media files**: Served by Django's normal media handling
 - **Routing**: `/static/` requests go to `staticfiles/`
@@ -114,6 +122,7 @@ echo "Build completed successfully!"
 ## 📝 **Expected Results**
 
 After this deployment:
+
 1. **Build process**: Will automatically collect static files
 2. **Static serving**: CSS, JS, and admin files will load properly
 3. **Media serving**: Song images and MP3 files will be accessible
@@ -121,16 +130,17 @@ After this deployment:
 
 ## 🎉 **Benefits Over Previous Approach**
 
-| Previous Approach | New Build Command Approach |
-|-------------------|---------------------------|
-| Manual file copying | Automated static collection |
+| Previous Approach      | New Build Command Approach      |
+| ---------------------- | ------------------------------- |
+| Manual file copying    | Automated static collection     |
 | Large public directory | Optimized staticfiles directory |
-| Size limitations | No size issues |
-| Manual maintenance | Django standard process |
+| Size limitations       | No size issues                  |
+| Manual maintenance     | Django standard process         |
 
 ## 📋 **Testing Checklist**
 
 Once deployed, verify:
+
 - [ ] Build process completes successfully
 - [ ] Static files are collected properly
 - [ ] CSS styling is working
@@ -146,4 +156,4 @@ Once deployed, verify:
 
 ---
 
-*This approach follows Vercel's best practices for Django applications and should provide a more reliable and maintainable deployment.*
+_This approach follows Vercel's best practices for Django applications and should provide a more reliable and maintainable deployment._
