@@ -14,4 +14,8 @@ python3 manage.py collectstatic --noinput || echo "Skipping collectstatic - data
 mkdir -p staticfiles
 cp -r staticfiles/* staticfiles/ 2>/dev/null || true
 
+# Copy media files to output directory for Vercel to serve
+mkdir -p staticfiles/media
+cp -r media/* staticfiles/media/ 2>/dev/null || true
+
 echo "Build completed successfully!"
