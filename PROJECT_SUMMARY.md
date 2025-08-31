@@ -37,8 +37,7 @@ MusicPlayer/
 {
   "buildCommand": "./build.sh",
   "outputDirectory": "staticfiles",
-  "installCommand": "pip install -r requirements.txt",
-  "framework": "django"
+  "installCommand": "pip install -r requirements.txt"
 }
 ```
 

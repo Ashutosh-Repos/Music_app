@@ -13,7 +13,6 @@ We've changed from the static file approach to a **build command approach** whic
   "buildCommand": "./build.sh",
   "outputDirectory": "staticfiles",
   "installCommand": "pip install -r requirements.txt",
-  "framework": "django",
   "builds": [
     {
       "src": "musicplayer/wsgi.py",
@@ -82,11 +81,11 @@ echo "Build completed successfully!"
 - **Action**: Runs `pip install -r requirements.txt`
 - **Benefits**: Ensures all dependencies are available
 
-### **4. Framework Detection (`framework`)**
+### **4. Custom Build Process**
 
-- **Purpose**: Tells Vercel this is a Django application
-- **Value**: `"django"`
-- **Benefits**: Vercel applies Django-specific optimizations
+- **Purpose**: Uses custom build script for Django applications
+- **Action**: Executes `./build.sh` with Django-specific commands
+- **Benefits**: Full control over the build process
 
 ## 🎯 **How It Works**
 
