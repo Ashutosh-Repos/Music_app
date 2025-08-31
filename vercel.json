@@ -1,7 +1,10 @@
 {
-  "buildCommand": "./build.sh",
-  "outputDirectory": "staticfiles",
-  "installCommand": "pip3 install -r requirements.txt",
+  "builds": [
+    {
+      "src": "musicplayer/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
   "routes": [
     {
       "src": "/static/(.*)",
