@@ -11,3 +11,4 @@ python-slugify>=4.0.1
 requests>=2.24.0 
 crispy-bootstrap4>=0.1
 whitenoise>=6.0.0
+PyJWT>=2.0.0
