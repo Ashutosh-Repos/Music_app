@@ -2,7 +2,10 @@
   "builds": [
     {
       "src": "musicplayer/wsgi.py",
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb"
+      }
     }
   ],
   "routes": [
@@ -13,5 +16,10 @@
   ],
   "env": {
     "DJANGO_SETTINGS_MODULE": "musicplayer.settings_prod"
+  },
+  "build": {
+    "env": {
+      "PYTHONPATH": "."
+    }
   }
 }
