@@ -12,7 +12,7 @@ We've changed from the static file approach to a **build command approach** whic
 {
   "buildCommand": "./build.sh",
   "outputDirectory": "staticfiles",
-  "installCommand": "pip install -r requirements.txt",
+  "installCommand": "pip3 install -r requirements.txt",
   "routes": [
     {
       "src": "/static/(.*)",
@@ -35,7 +35,7 @@ We've changed from the static file approach to a **build command approach** whic
 #!/bin/bash
 
 # Install dependencies
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 # Run migrations
 python manage.py migrate --noinput
@@ -67,7 +67,7 @@ echo "Build completed successfully!"
 ### **3. Install Command (`installCommand`)**
 
 - **Purpose**: Installs Python dependencies
-- **Action**: Runs `pip install -r requirements.txt`
+- **Action**: Runs `pip3 install -r requirements.txt`
 - **Benefits**: Ensures all dependencies are available
 
 ### **4. Custom Build Process**

@@ -37,7 +37,7 @@ MusicPlayer/
 {
   "buildCommand": "./build.sh",
   "outputDirectory": "staticfiles",
-  "installCommand": "pip install -r requirements.txt"
+  "installCommand": "pip3 install -r requirements.txt"
 }
 ```
 
