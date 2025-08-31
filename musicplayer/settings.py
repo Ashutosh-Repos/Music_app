@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import dj_database_url
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -91,22 +90,12 @@ WSGI_APPLICATION = 'musicplayer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# Use PostgreSQL on Vercel, SQLite locally
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL', default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')),
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
-
-# Database configuration for external PostgreSQL
-if config('DATABASE_URL', default=''):
-    DATABASES['default'] = dj_database_url.parse(
-        config('DATABASE_URL'),
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -159,30 +148,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 # Media files configuration
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-# Cloud Storage Configuration (AWS S3)
-USE_S3 = config('USE_S3', default=False, cast=bool)
-
-if USE_S3:
-    # AWS S3 Configuration
-    AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
-    AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME', default='us-east-1')
-    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-    AWS_S3_OBJECT_PARAMETERS = {
-        'CacheControl': 'max-age=86400',
-    }
-    AWS_LOCATION = 'media'
-    AWS_DEFAULT_ACL = 'public-read'
-    
-    # Media files
-    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    
-    # Static files (optional - can use WhiteNoise instead)
-    # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    # STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

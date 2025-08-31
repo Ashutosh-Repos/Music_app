@@ -21,6 +21,7 @@ DATABASE_URL=postgresql://postgres:OoonthySFqJvlUgbMNMfFIrXoHBhHPMv@centerbeam.p
 Your code is now pushed to: https://github.com/Ashutosh-Repos/Music_app.git
 
 ## Database Information
+
 - **Provider**: Railway
 - **Type**: PostgreSQL
 - **Status**: ✅ Connected and tested
@@ -35,6 +36,7 @@ Your code is now pushed to: https://github.com/Ashutosh-Repos/Music_app.git
 5. Deploy!
 
 ## Migration (After Deployment)
+
 After successful deployment, you can migrate your existing data:
 
 ```bash
