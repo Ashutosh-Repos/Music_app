@@ -7,8 +7,8 @@ pip3 install -r requirements.txt
 # Run migrations only if database is available
 python3 manage.py migrate --noinput || echo "Skipping migrations - database not available during build"
 
-# Collect static files
-python3 manage.py collectstatic --noinput
+# Collect static files (skip if database not available)
+python3 manage.py collectstatic --noinput || echo "Skipping collectstatic - database not available during build"
 
 # Create output directory structure
 mkdir -p staticfiles
