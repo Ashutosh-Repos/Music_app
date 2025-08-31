@@ -1,4 +1,8 @@
 {
+  "buildCommand": "./build.sh",
+  "outputDirectory": "staticfiles",
+  "installCommand": "pip install -r requirements.txt",
+  "framework": "django",
   "builds": [
     {
       "src": "musicplayer/wsgi.py",
@@ -8,7 +12,7 @@
   "routes": [
     {
       "src": "/static/(.*)",
-      "dest": "/public/$1"
+      "dest": "/staticfiles/$1"
     },
     {
       "src": "/(.*)",
