@@ -38,10 +38,10 @@ We've changed from the static file approach to a **build command approach** whic
 pip3 install -r requirements.txt
 
 # Run migrations
-python manage.py migrate --noinput
+python3 manage.py migrate --noinput
 
 # Collect static files
-python manage.py collectstatic --noinput
+python3 manage.py collectstatic --noinput
 
 # Create output directory structure
 mkdir -p staticfiles
