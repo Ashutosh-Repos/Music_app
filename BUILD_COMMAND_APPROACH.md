@@ -13,12 +13,6 @@ We've changed from the static file approach to a **build command approach** whic
   "buildCommand": "./build.sh",
   "outputDirectory": "staticfiles",
   "installCommand": "pip install -r requirements.txt",
-  "builds": [
-    {
-      "src": "musicplayer/wsgi.py",
-      "use": "@vercel/python"
-    }
-  ],
   "routes": [
     {
       "src": "/static/(.*)",
