@@ -25,11 +25,6 @@ We've changed from the static file approach to a **build command approach** whic
   ],
   "env": {
     "DJANGO_SETTINGS_MODULE": "musicplayer.settings_prod"
-  },
-  "functions": {
-    "musicplayer/wsgi.py": {
-      "maxDuration": 30
-    }
   }
 }
 ```
