@@ -18,3 +18,6 @@ else:
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'musicplayer.settings')
 
 application = get_wsgi_application()
+
+# Vercel expects 'app' variable
+app = application
