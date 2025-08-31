@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     # apps
     'authentication.apps.AuthenticationConfig',
     'musicapp.apps.MusicappConfig',
-    'api',
 ]
 
 MIDDLEWARE = [
@@ -115,8 +114,8 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# WhiteNoise configuration
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# WhiteNoise configuration - use simpler storage for Vercel
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
