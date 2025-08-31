@@ -22,9 +22,6 @@
   <br />
   <h1 class="text-center">Sign In</h1>
   <br />
-  {% get_providers as socialaccount_providers %} {% if socialaccount_providers
-  %} {% for provider in socialaccount_providers %} {% if provider.id == "google"
-  %}
   <a
     href="{% provider_login_url 'google' process='login' %}"
     class="btn btn-outline-dark btn-block"
@@ -38,7 +35,6 @@
     Sign in with Google
   </a>
   <div class="or-seperator"><i>or</i></div>
-  {% endif %} {% endfor %} {% endif %}
   <form method="post">
     {% csrf_token %} {{form.as_p}}
     <button class="btn btn-success btn-block" type="submit">Log In</button>

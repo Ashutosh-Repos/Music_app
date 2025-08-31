@@ -26,17 +26,14 @@ def index(request):
         last_played_list = list(Recent.objects.filter(user=request.user).values('song_id').order_by('-id'))
         if last_played_list:
             last_played_id = last_played_list[0]['song_id']
-            try:
-                last_played_song = Song.objects.get(id=last_played_id)
-            except Song.DoesNotExist:
-                first_time = True
-                last_played_song = None
+            last_played_song = Song.objects.get(id=last_played_id)
         else:
             first_time = True
-            last_played_song = None
+            last_played_song = Song.objects.get(id=7)
+
     else:
         first_time = True
-        last_played_song = None
+        last_played_song = Song.objects.get(id=7)
 
     #Display all songs
     songs = Song.objects.all()
@@ -82,12 +79,9 @@ def hindi_songs(request):
     last_played_list = list(Recent.objects.values('song_id').order_by('-id'))
     if last_played_list:
         last_played_id = last_played_list[0]['song_id']
-        try:
-            last_played_song = Song.objects.get(id=last_played_id)
-        except Song.DoesNotExist:
-            last_played_song = None
+        last_played_song = Song.objects.get(id=last_played_id)
     else:
-        last_played_song = None
+        last_played_song = Song.objects.get(id=7)
 
     query = request.GET.get('q')
 
@@ -108,12 +102,9 @@ def english_songs(request):
     last_played_list = list(Recent.objects.values('song_id').order_by('-id'))
     if last_played_list:
         last_played_id = last_played_list[0]['song_id']
-        try:
-            last_played_song = Song.objects.get(id=last_played_id)
-        except Song.DoesNotExist:
-            last_played_song = None
+        last_played_song = Song.objects.get(id=last_played_id)
     else:
-        last_played_song = None
+        last_played_song = Song.objects.get(id=7)
 
     query = request.GET.get('q')
 

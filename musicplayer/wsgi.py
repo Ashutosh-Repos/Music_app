@@ -11,9 +11,10 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'musicplayer.settings')
+# Check if we're in production (Vercel)
+if os.environ.get('VERCEL_ENV') == 'production':
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'musicplayer.settings_prod')
+else:
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'musicplayer.settings')
 
 application = get_wsgi_application()
-
-# For Vercel deployment
-app = application
